@@ -34,15 +34,6 @@ public class MainScreen extends AbstractScreen {
     public void mainNavigateToGoogle() {
         assertMainBrowserView();
         searchOnWeb("http://www.google.com");
-        // DELETE HERE DOWN
-        System.out.println("attempting scroll down");
-        scrolling.scrollDown();
-        System.out.println("scroll down done");
-
-        System.out.println("attempting scroll up");
-        scrolling.scrollUp();
-        System.out.println("scroll up done");
-
     }
 
     // Helpers
