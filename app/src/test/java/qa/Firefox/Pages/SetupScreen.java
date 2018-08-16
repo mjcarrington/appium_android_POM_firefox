@@ -19,7 +19,7 @@ public class SetupScreen extends AbstractScreen {
     // Element Definition
     // Permission Dialog
     @AndroidFindBy(id = "com.android.packageinstaller:id/permission_allow_button")
-    public WebElement setupPermissionAllowButton;
+    public MobileElement setupPermissionAllowButton;
 
     @AndroidFindBy(id = "org.mozilla.firefox:id/firstrun_image")
     private MobileElement setupInitialIcon;

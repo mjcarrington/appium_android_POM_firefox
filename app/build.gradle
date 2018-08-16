@@ -1,61 +1,9 @@
 apply plugin: 'java'
 
 dependencies {
-    compile group: 'io.appium', name: 'java-client', version: '4.1.2'
+    //compile group: 'io.appium', name: 'java-client', version: '4.1.2'
+    compile group: 'io.appium', name: 'java-client', version: '6.0.0-BETA4'
     compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
     testCompile 'commons-lang:commons-lang:2.6'
     testCompile group: 'org.testng', name: 'testng', version: '6.10'
-    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
-}
-
-// use these from the command line
-def parallel = project.hasProperty("parallel-server")
-def single = project.hasProperty("single-server")
-def parallelmesh = project.hasProperty("parallelmesh")
-def singlemesh = project.hasProperty("singlemesh")
-
-def s5mesh = project.hasProperty("s5mesh")
-def s7mesh = project.hasProperty("s7mesh")
-
-def s5server = project.hasProperty("s5server")
-def s7server = project.hasProperty("s7server")
-
-def s7serverquick = project.hasProperty("s7serverquick")
-
-
-test {
-    systemProperty 'version', System.properties['version'] ?: 'Unknown'
-    systemProperty 'build', System.properties['build'] ?: 'Unknown'
-
-    useTestNG() {
-        if (parallel) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-parallel-server.xml"
-        }
-        if (single) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-single-server.xml"
-        }
-        if (parallelmesh) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-parallel-mesh.xml"
-        }
-        if (singlemesh) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-single-mesh.xml"
-        }
-        if (s5mesh) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-S5-6.0-mesh.xml"
-        }
-        if (s7mesh) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-S7-7.0-mesh.xml"
-        }
-        if (s5server) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-S5-6.0-server.xml"
-        }
-        if (s7server) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-S7-7.0-server.xml"
-        }
-        if (s7serverquick) {
-            suites "/src/test/java/qa/Firefox/util/TestNG-S7-7.0-quick.xml"
-        }
-        testLogging.showStandardStreams = true
-        useDefaultListeners = true
-    }
 }

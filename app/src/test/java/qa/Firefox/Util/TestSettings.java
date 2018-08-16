@@ -29,9 +29,6 @@ public class TestSettings {
     @BeforeTest(alwaysRun=true)
     // the real parameters are used for parallel testing
     // the optional parameter entries are used for single device testing
-    // public final void setUp(@Optional("6123") String port, @Optional("f12443b0") String device, @Optional("6.0.1")String os) // run S5 - 6.0 only
-    // public void setUp(@Optional("4923") String port, @Optional("ce09160972de4f4002") String device, @Optional("7.0")String os) // run S7 - 7.0 only
-    // public void setUp(@Optional("7123") String port, @Optional("1ede9983") String device, @Optional("5.0")String os) // run S5 - 5.0 only
     public void setUp(@Optional("8123") String port, @Optional("ce0117112c812b2704") String device, @Optional("7.0")String os) // run S7 - dev device
     throws Exception {
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -40,7 +37,7 @@ public class TestSettings {
         capabilities.setCapability("appPackage", APPPACKAGE);
         capabilities.setCapability("appActivity", APPACTIVITY );
         capabilities.setCapability("automationName", "uiautomator2");
-        capabilities.setCapability("systemPort", port);
+        capabilities.setCapability("systemPort", Integer.parseInt(port));
         URL serverAddressLocal = (new URL("http://127.0.0.1:" + port + "/wd/hub"));
         this.driver = new AndroidDriver(serverAddressLocal, capabilities);
     }
@@ -53,7 +50,7 @@ public class TestSettings {
     // create the directory for the logging
     public static String setLogFolder() {
         String runDate = ElementsHelper.getDateTime();
-        String logFolder = setHomeFolder()+"/Desktop/Tests/CWE_Patrol-Test_Result_"+runDate;
+        String logFolder = setHomeFolder()+"/Desktop/Tests/FF_AndroidTest_"+runDate;
         new File(logFolder).mkdir();
         return logFolder + "/";
     }

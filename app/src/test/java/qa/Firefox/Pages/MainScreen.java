@@ -3,19 +3,21 @@ package qa.Firefox.Pages;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
+import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import qa.Firefox.Util.ElementsHelper;
+import qa.Firefox.Util.Scrolling;
 
 public class MainScreen extends AbstractScreen {
 
     // Element Definition
     // Permission Dialog
     @AndroidFindBy(id = "org.mozilla.firefox:id/url_bar_title")
-    private WebElement mainSearchButton;
+    private MobileElement mainSearchButton;
 
     @AndroidFindBy(id = "org.mozilla.firefox:id/url_edit_text")
-    private WebElement mainSearchInput;
+    private MobileElement mainSearchInput;
 
     @AndroidFindBy(id = "org.mozilla.firefox:id/site_security")
     private MobileElement mainSecurityInfoButton;
@@ -26,11 +28,21 @@ public class MainScreen extends AbstractScreen {
     }
 
     ElementsHelper elementsHelper = new ElementsHelper(driver);
+    Scrolling scrolling = new Scrolling(driver);
 
     // Tests
     public void mainNavigateToGoogle() {
         assertMainBrowserView();
         searchOnWeb("http://www.google.com");
+        // DELETE HERE DOWN
+        System.out.println("attempting scroll down");
+        scrolling.scrollDown();
+        System.out.println("scroll down done");
+
+        System.out.println("attempting scroll up");
+        scrolling.scrollUp();
+        System.out.println("scroll up done");
+
     }
 
     // Helpers

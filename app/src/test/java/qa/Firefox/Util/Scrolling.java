@@ -1,6 +1,7 @@
 package qa.Firefox.Util;
-import io.appium.java_client.MultiTouchAction;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import qa.Firefox.Pages.AbstractScreen;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.Dimension;
@@ -20,13 +21,22 @@ public class Scrolling extends AbstractScreen {
     private int endY = (int) (size.height * 0.20);
 
     // Scrolling
+
     public void scrollUp() {
         TouchAction action = new TouchAction(driver);
-        action.press(startX, endY).waitAction(2000).moveTo(startX, startY).release().perform();
+        action.press(PointOption.point(startX, endY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+                .moveTo(PointOption.point(startX, startY))
+                .release()
+                .perform();
     }
 
     public void scrollDown() {
         TouchAction action = new TouchAction(driver);
-        action.press(startX, startY).waitAction(2000).moveTo(startX, endY).release().perform();
+        action.press(PointOption.point(startX, startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+                .moveTo(PointOption.point(startX, endY))
+                .release()
+                .perform();
     }
 }

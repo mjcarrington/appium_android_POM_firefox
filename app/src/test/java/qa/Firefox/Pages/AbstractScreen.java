@@ -1,6 +1,7 @@
 package qa.Firefox.Pages;
 
 
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -60,8 +61,7 @@ public class AbstractScreen {
             homeButton.click();
         } catch (NoSuchElementException ex2) {
             // assume we are in a bad state and relaunch
-            SetupScreen setupScreen = new SetupScreen(driver);
-            ((AndroidDriver<MobileElement>) driver).startActivity(TestSettings.APPPACKAGE, TestSettings.APPACTIVITY, TestSettings.APPPACKAGE, TestSettings.APPACTIVITY);
+            restartAppActivity();
         }
     }
 
@@ -72,7 +72,7 @@ public class AbstractScreen {
             System.out.println("App crashed!");
             System.out.println("Current activity running: " + activity);
             getCrashLogs();
-            ((AndroidDriver<MobileElement>) driver).startActivity(TestSettings.APPPACKAGE, TestSettings.APPACTIVITY, TestSettings.APPPACKAGE, TestSettings.APPACTIVITY);
+            restartAppActivity();
         }
     }
 
@@ -85,5 +85,12 @@ public class AbstractScreen {
                 crashLog.forEach(System.out::println); // prints out results
             }
         }
+    }
+
+    private void restartAppActivity() {
+        Activity activity = new Activity("", "");
+        activity.setAppWaitPackage(TestSettings.APPPACKAGE);
+        activity.setAppWaitActivity(TestSettings.APPACTIVITY);
+        ((AndroidDriver<MobileElement>) driver).startActivity(activity);
     }
 }

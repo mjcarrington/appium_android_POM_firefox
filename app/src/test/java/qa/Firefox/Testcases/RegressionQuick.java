@@ -23,4 +23,6 @@ public class RegressionQuick extends TestSettings {
         MainScreen mainScreen = new MainScreen(driver);
         mainScreen.mainNavigateToGoogle();
     }
+
+
 }
