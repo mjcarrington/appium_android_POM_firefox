@@ -53,6 +53,7 @@ public class MainScreen extends AbstractScreen {
         elementsHelper.waitForElementAndClick(mainSearchButton, 2);
         elementsHelper.explicitWait(mainSearchInput, 3);
         mainSearchInput.sendKeys(searchQuery);
+        elementsHelper.waitForElementAndClick(driver.findElementByXPath("//*[@resource-id='org.mozilla.firefox:id/suggestion_text' and @text='"+searchQuery+"']"), 3);
     }
 
     public void navigateToTabView() {
