@@ -24,5 +24,9 @@ public class RegressionQuick extends TestSettings {
         mainScreen.mainNavigateToGoogle();
     }
 
-
+    @Test(priority = 1)
+    public void testOpeningNewTab() {
+        MainScreen mainScreen = new MainScreen(driver);
+        mainScreen.openNewBrowserTabFromMenu();
+    }
 }

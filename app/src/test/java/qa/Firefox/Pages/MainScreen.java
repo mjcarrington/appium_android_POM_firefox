@@ -6,13 +6,13 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import qa.Firefox.Util.ElementsHelper;
 import qa.Firefox.Util.Scrolling;
 
 public class MainScreen extends AbstractScreen {
 
     // Element Definition
-    // Permission Dialog
     @AndroidFindBy(id = "org.mozilla.firefox:id/url_bar_title")
     private MobileElement mainSearchButton;
 
@@ -21,6 +21,9 @@ public class MainScreen extends AbstractScreen {
 
     @AndroidFindBy(id = "org.mozilla.firefox:id/site_security")
     private MobileElement mainSecurityInfoButton;
+
+    @AndroidFindBy(id = "org.mozilla.firefox:id/counter_text")
+    private MobileElement tabCount;
 
     // Driver setup
     public MainScreen(AppiumDriver driver) {
@@ -34,6 +37,14 @@ public class MainScreen extends AbstractScreen {
     public void mainNavigateToGoogle() {
         assertMainBrowserView();
         searchOnWeb("http://www.google.com");
+    }
+
+    public void openNewBrowserTabFromMenu() {
+        assertMainBrowserView();
+        MenuScreen menuScreen = new MenuScreen(driver);
+        menuScreen.selectMenuOption("New tab");
+        // assert that the tab count is now 2
+        Assert.assertTrue(tabCount.getText().equals("2"));
     }
 
     // Helpers
