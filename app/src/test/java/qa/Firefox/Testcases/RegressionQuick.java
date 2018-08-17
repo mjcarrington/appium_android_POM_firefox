@@ -29,4 +29,11 @@ public class RegressionQuick extends TestSettings {
         MainScreen mainScreen = new MainScreen(driver);
         mainScreen.openNewBrowserTabFromMenu();
     }
+
+    @Test(priority = 1)
+    public void testNewTabFromTabView() {
+        TabScreen tabScreen = new TabScreen(driver);
+        tabScreen.addNewTab();
+    }
+
 }

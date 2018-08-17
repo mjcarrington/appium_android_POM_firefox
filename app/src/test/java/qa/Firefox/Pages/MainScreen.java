@@ -55,6 +55,11 @@ public class MainScreen extends AbstractScreen {
         mainSearchInput.sendKeys(searchQuery);
     }
 
+    public void navigateToTabView() {
+        assertMainBrowserView();
+        tabCount.click();
+    }
+
     // ASSERTS
     public void assertMainBrowserView() {
         try {

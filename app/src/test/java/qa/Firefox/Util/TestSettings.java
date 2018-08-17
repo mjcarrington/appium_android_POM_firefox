@@ -36,7 +36,6 @@ public class TestSettings {
         capabilities.setCapability("platformVersion", os);
         capabilities.setCapability("appPackage", APPPACKAGE);
         capabilities.setCapability("appActivity", APPACTIVITY );
-        capabilities.setCapability("automationName", "uiautomator2");
         capabilities.setCapability("systemPort", Integer.parseInt(port));
         URL serverAddressLocal = (new URL("http://127.0.0.1:" + port + "/wd/hub"));
         this.driver = new AndroidDriver(serverAddressLocal, capabilities);
