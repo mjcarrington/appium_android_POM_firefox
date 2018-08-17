@@ -4,6 +4,7 @@ import io.appium.java_client.MobileElement;
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,7 +62,7 @@ public class SetupScreen extends AbstractScreen {
     public void assertSetupView() {
         try {
             elementsHelper.explicitWait(setupInitialIcon, 2);
-        } catch (NoSuchElementException ex) {
+        } catch (TimeoutException ex) {
             elementsHelper.explicitWait(setupInitialIcon, 2);
         }
         elementsHelper.assertElementDisplayed(setupInitialIcon);

@@ -5,6 +5,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import qa.Firefox.Util.ElementsHelper;
@@ -58,7 +59,7 @@ public class MainScreen extends AbstractScreen {
     public void assertMainBrowserView() {
         try {
             elementsHelper.explicitWait(mainSecurityInfoButton, 2);
-        } catch (NoSuchElementException ex) {
+        } catch (TimeoutException ex) {
             elementsHelper.explicitWait(mainSecurityInfoButton, 2);
         }
         elementsHelper.assertElementDisplayed(mainSecurityInfoButton);
