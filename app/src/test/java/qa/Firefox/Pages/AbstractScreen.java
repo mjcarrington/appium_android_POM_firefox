@@ -60,7 +60,7 @@ public class AbstractScreen {
     public void detectAppCrashRelaunch() {
         SetupScreen setupScreen = new SetupScreen(driver);
         String activity = ((AndroidDriver<MobileElement>) driver).currentActivity();
-        if (!activity.matches("org.mozilla.gecko.BrowserApp.*")) {
+        if (!activity.matches("org.mozilla.gecko.*")) {
             System.out.println("App crashed!");
             System.out.println("Current activity running: " + activity);
             getCrashLogs();

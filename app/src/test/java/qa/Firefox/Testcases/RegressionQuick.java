@@ -41,4 +41,17 @@ public class RegressionQuick extends TestSettings {
         TabScreen tabScreen = new TabScreen(driver);
         tabScreen.clearAllTabs();
     }
+
+    @Test(priority = 3)
+    public void testSettingsView() {
+        SettingsScreen settingsScreen = new SettingsScreen(driver);
+        settingsScreen.viewAppSettingsList();
+    }
+
+    @Test(priority = 3)
+    public void testSettingsViewGeneral() {
+        SettingsScreen settingsScreen = new SettingsScreen(driver);
+        settingsScreen.    viewAppSettingsGeneral();
+    }
+
 }
